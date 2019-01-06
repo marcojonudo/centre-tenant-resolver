@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: centre.tenant.resolver
+---
+testFramework: spock
+sourceLanguage: groovy
