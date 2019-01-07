@@ -14,7 +14,8 @@ grails:
     gorm:
         multiTenancy:
             mode: DATABASE
-            tenantResolverClass: 'io.micronaut.multitenancy.gorm.HttpHeaderTenantResolver'
+#            tenantResolverClass: 'io.micronaut.multitenancy.gorm.HttpHeaderTenantResolver'
+            tenantResolverClass: 'centre.tenant.resolver.tenant.resolver.CustomTenantResolver'
 
 dataSource:
     dbCreate: validate
