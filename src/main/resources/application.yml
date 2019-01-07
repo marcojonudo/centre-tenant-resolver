@@ -1,3 +1,46 @@
 micronaut:
     application:
         name: centre-tenant-resolver
+    server:
+        port: 8082
+        cors:
+            enabled: true
+
+hibernate:
+    hbm2ddl:
+        auto: 'update'
+
+grails:
+    gorm:
+        multiTenancy:
+            mode: DATABASE
+            tenantResolverClass: 'io.micronaut.multitenancy.gorm.HttpHeaderTenantResolver'
+
+#dataSources:
+#    default:
+#        dbCreate: validate
+#        driverClassName: com.mysql.jdbc.Driver
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#        url: jdbc:mysql://localhost:3306/cubo
+#        username: root
+#        password: root
+#    cubo:
+#        dbCreate: validate
+#        driverClassName: com.mysql.jdbc.Driver
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#        url: jdbc:mysql://localhost:3306/cubo
+#        username: root
+#        password: root
+dataSource:
+    dbCreate: validate
+    driverClassName: com.mysql.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    url: jdbc:mysql://localhost:3306/cubo
+    username: root
+    password: root
+
+dataSources:
+    cubo:
+        url: jdbc:mysql://localhost:3306/cubo
+        username: root
+        password: root
