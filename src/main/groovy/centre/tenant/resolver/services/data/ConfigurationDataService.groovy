@@ -9,6 +9,6 @@ import grails.gorm.services.Service
 interface ConfigurationDataService {
 
 	List<Configuration> findAll()
-	Configuration findByClave(String clave)
+	Configuration find(String clave)
 
 }
