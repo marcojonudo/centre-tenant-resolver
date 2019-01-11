@@ -9,17 +9,17 @@ class Employee implements GormEntity<Employee>, MultiTenant {
 
 	String code
 	String name
-	String surname1
-	String surname2
-	String passwordNumber
-	Gender gender
+	String noap1
+	String noap2
+	String nopasswd
+	Gender sex
 	boolean active
 
 	static hasMany = [scheduleWeekTemplates: ScheduleWeekTemplate]
 	static belongsTo = ScheduleWeekTemplate
 		
     static constraints = {
-		gender nullable: true
+		sex nullable: true
     }
 
 	static mapping = {

@@ -13,14 +13,16 @@ class CentreSchedule implements GormEntity<CentreSchedule>, MultiTenant {
     Time end
     Date dateCreated
     Date dateUpdated
-    Date deleted
+    Date dateDeleted
 
     static constraints = {
         day nullable: true
-        deleted nullable: true
+        dateUpdated nullable: true
+        dateDeleted nullable: true
     }
 
     static mapping = {
+        datasource 'cubo'
         version defaultValue: 0
         dateCreated defaultValue: new Date()
         dateUpdated defaultValue: new Date()

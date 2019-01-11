@@ -10,8 +10,6 @@ class ScheduleAbsence implements GormEntity<ScheduleAbsence>, MultiTenant {
     String code
     String description
     Date dateCreated
-    Date dateUpdated
-    boolean deleted
 
     static constraints = {
         code maxSize: 45
@@ -21,8 +19,6 @@ class ScheduleAbsence implements GormEntity<ScheduleAbsence>, MultiTenant {
     static mapping = {
         version defaultValue: 0
         dateCreated defaultValue: new Date()
-        dateUpdated defaultValue: new Date()
-        deleted defaultValue: false
     }
 
     static hasMany = [employeeSchedule: EmployeeSchedule]

@@ -8,10 +8,10 @@ import org.grails.datastore.gorm.GormEntity
 class Contract implements GormEntity<Contract>, MultiTenant {
 
 	Employee employee
-	java.sql.Date start
-	java.sql.Date end
+	Date start
+	Date end
 	JobPosition jobPosition
-	Integer weekHours
+	int hoursWeek
 
 	static constraints = { 
 		end nullable: true

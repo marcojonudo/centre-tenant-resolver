@@ -16,8 +16,6 @@ class Schedule implements GormEntity<Schedule>, MultiTenant {
     ScheduleType type
     float hours
     Date dateCreated
-    Date dateUpdated
-    boolean deleted
 
     static constraints = {
         morningStart nullable: true, validator: { Date value, Schedule scheduleDay ->
@@ -45,8 +43,6 @@ class Schedule implements GormEntity<Schedule>, MultiTenant {
     static mapping = {
         version defaultValue: 0
         dateCreated defaultValue: new Date()
-        dateUpdated defaultValue: new Date()
-        deleted defaultValue: false
     }
 
     static hasMany = [employeeSchedule: EmployeeSchedule]

@@ -16,7 +16,6 @@ class EmployeeSchedule implements GormEntity<EmployeeSchedule>, MultiTenant {
     Date dateCreated
     Date dateUpdated
 	String userUpdated
-    boolean deleted
 
     static constraints = {
 	    day nullable: true
@@ -25,6 +24,7 @@ class EmployeeSchedule implements GormEntity<EmployeeSchedule>, MultiTenant {
         panelPosition nullable: true, maxSize: 1
         schedule nullable: true
         absence nullable: true
+        dateUpdated nullable: true
 	    userUpdated nullable: true, maxSize: 45
     }
 
@@ -33,7 +33,6 @@ class EmployeeSchedule implements GormEntity<EmployeeSchedule>, MultiTenant {
         showInPanel defaultValue: true
         dateCreated defaultValue: new Date()
         dateUpdated defaultValue: new Date()
-        deleted defaultValue: false
     }
 
     static hasOne = [schedule: Schedule, absence: ScheduleAbsence, jobPositionGroup: JobPositionGroup]

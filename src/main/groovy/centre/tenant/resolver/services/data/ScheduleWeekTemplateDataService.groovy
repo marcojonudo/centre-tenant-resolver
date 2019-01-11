@@ -10,7 +10,7 @@ import grails.gorm.services.Service
 interface ScheduleWeekTemplateDataService {
 
 	List<ScheduleWeekTemplate> findAll()
-	ScheduleWeekTemplate find(String description, boolean deleted)
+	ScheduleWeekTemplate find(String description)
 	ScheduleWeekTemplate save(String description, Schedule day0, Schedule day1, Schedule day2, Schedule day3, Schedule day4, Schedule day5, Schedule day6)
 
 }

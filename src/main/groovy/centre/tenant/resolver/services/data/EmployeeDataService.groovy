@@ -1,6 +1,5 @@
 package centre.tenant.resolver.services.data
 
-import centre.tenant.resolver.domains.cubo.CentreSchedule
 import centre.tenant.resolver.domains.cubo.Employee
 import grails.gorm.multitenancy.CurrentTenant
 import grails.gorm.services.Service
@@ -9,6 +8,6 @@ import grails.gorm.services.Service
 @Service(Employee)
 interface EmployeeDataService {
 
-	CentreSchedule get(String code)
+	Employee get(String code)
 
 }

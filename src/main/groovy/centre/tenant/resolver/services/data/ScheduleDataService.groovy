@@ -11,7 +11,7 @@ import java.sql.Time
 @Service(Schedule)
 interface ScheduleDataService {
 
-	Schedule find(Time morningStart, Time morningEnd, Time afternoonStart, Time afternoonEnd, boolean deleted)
+	Schedule find(Time morningStart, Time morningEnd, Time afternoonStart, Time afternoonEnd)
 	Schedule save(Time morningStart, Time morningEnd, Time afternoonStart, Time afternoonEnd, ScheduleType type)
 
 }

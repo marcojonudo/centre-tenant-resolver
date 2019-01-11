@@ -24,3 +24,9 @@ dataSource:
     url: jdbc:mysql://localhost:3306/centre_database_config
     username: root
     password: root
+
+dataSources:
+    cubo:
+        url: jdbc:mysql://localhost:3306/cubo
+        username: root
+        password: root

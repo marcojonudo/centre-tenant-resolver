@@ -17,9 +17,8 @@ class ScheduleWeekTemplate implements GormEntity<ScheduleWeekTemplate>, MultiTen
 	Schedule day5
 	Schedule day6
 	float hours
-    boolean deleted
 	Date dateCreated
-	Date dateUpdated
+	Date dateDeleted
 
     static constraints = {
         description maxSize: 255
@@ -30,12 +29,12 @@ class ScheduleWeekTemplate implements GormEntity<ScheduleWeekTemplate>, MultiTen
 	    day4 nullable: true
 	    day5 nullable: true
 	    day6 nullable: true
+	    dateDeleted nullable: true
     }
 
     static mapping = {
         version defaultValue: 0
 	    dateCreated defaultValue: new Date()
-	    dateUpdated defaultValue: new Date()
     }
 
 	static hasMany = [employees: Employee]
