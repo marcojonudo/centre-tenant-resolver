@@ -40,7 +40,7 @@ class CustomTenantResolver implements TenantResolver {
 			if (nullIndex != -1) {
 				throw new TenantNotFoundException("Tenant could not be resolved. Header '${TENANTS_KEYS[nullIndex]}' value is null")
 			}
-			String tenantId = buildTenantId(tenantIds[0] as int, tenantIds[1])
+			String tenantId = "cubo"//buildTenantId(tenantIds[0] as int, tenantIds[1])
 			return tenantId
 		}
 		throw new TenantNotFoundException("Tenant could not be resolved from HTTP Header: ${TENANTS_KEYS.collect { "'$it'" }.join(", ")}")

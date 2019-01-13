@@ -11,6 +11,7 @@ import java.sql.Date
 interface CentreScheduleDataService {
 
 	CentreSchedule get(Date day)
+	CentreSchedule get(long id)
 	CentreSchedule save(Date day)
 
 }

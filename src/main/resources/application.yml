@@ -8,25 +8,30 @@ micronaut:
 
 hibernate:
     hbm2ddl:
-        auto: 'update'
+        auto: 'none'
 
 grails:
     gorm:
         multiTenancy:
             mode: DATABASE
-#            tenantResolverClass: 'io.micronaut.multitenancy.gorm.HttpHeaderTenantResolver'
             tenantResolverClass: 'centre.tenant.resolver.tenant.resolver.CustomTenantResolver'
 
 dataSource:
     dbCreate: validate
     driverClassName: com.mysql.jdbc.Driver
     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-    url: jdbc:mysql://localhost:3306/centre_database_config
+    url: jdbc:mysql://localhost:3306/centre_database_config?useSSL=false
     username: root
     password: root
 
 dataSources:
     cubo:
-        url: jdbc:mysql://localhost:3306/cubo
+        dbCreate: validate
+        url: jdbc:mysql://localhost:3306/cubo?useSSL=false
+        username: root
+        password: root
+    fviberi:
+        dbCreate: validate
+        url: jdbc:mysql://localhost:3306/cubo?useSSL=false
         username: root
         password: root

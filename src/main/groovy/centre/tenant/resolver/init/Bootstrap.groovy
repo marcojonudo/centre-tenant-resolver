@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory
 
 import javax.inject.Inject
 import javax.inject.Singleton
+import javax.sql.DataSource
 
 @Singleton
 class Bootstrap implements ApplicationEventListener<StartupEvent> {
@@ -23,21 +24,25 @@ class Bootstrap implements ApplicationEventListener<StartupEvent> {
 	@Inject HibernateDatastore hibernateDatastore
 	@Inject CentreService centreService
 	@Inject DatabaseNameService databaseNameService
+	@Inject DataSource dataSource
 
 	@Override
 	void onApplicationEvent(StartupEvent event) {
-		LOG.info(databaseNameService.findAll().toString())
+		print("\n")
+		LOG.info("Inserting centres dataSources...")
+		LOG.info("Local dataSources names: ${databaseNameService.findAll().name.toString()}")
+
+		List<String> centresDataSources = []
 		databaseNameService.findAll().each { DatabaseName databaseName ->
-			LOG.info(databaseName.name)
 			centreService.findAll().each {
 				String dataSourceName = CustomTenantResolver.buildTenantId(it.code, databaseName.name)
 				DbConfig dbConfig = new DbConfig(databaseName.name, it.code)
 				addDataSource(dataSourceName, dbConfig.config)
+				centresDataSources << dataSourceName
 			}
-//			addDataSource(DEFAULT_DATABASE_NAME, new DbConfig(databaseName.name).config)
 		}
-		List<String> connectionSourcesNames = hibernateDatastore.connectionSources.allConnectionSources.collect { it.name }
-		LOG.info("Connection sources names: $connectionSourcesNames")
+		LOG.info("Centres dataSources names: $centresDataSources")
+		LOG.info("Centres dataSources inserted\n")
 	}
 
 	void addDataSource(String name, Map<String, Object> config) {

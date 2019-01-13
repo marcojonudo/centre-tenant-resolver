@@ -3,8 +3,11 @@ package centre.tenant.resolver.domains.cubo
 import grails.gorm.MultiTenant
 import grails.gorm.annotation.Entity
 import org.grails.datastore.gorm.GormEntity
+
+import javax.inject.Singleton
 import java.sql.Time
 
+@Singleton
 @Entity
 class CentreSchedule implements GormEntity<CentreSchedule>, MultiTenant {
 
@@ -22,7 +25,6 @@ class CentreSchedule implements GormEntity<CentreSchedule>, MultiTenant {
     }
 
     static mapping = {
-        datasource 'cubo'
         version defaultValue: 0
         dateCreated defaultValue: new Date()
         dateUpdated defaultValue: new Date()
