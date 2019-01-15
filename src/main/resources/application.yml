@@ -25,13 +25,13 @@ dataSource:
     password: root
 
 dataSources:
-    cubo:
-        dbCreate: validate
-        url: jdbc:mysql://localhost:3306/cubo?useSSL=false
-        username: root
-        password: root
-    fviberi:
-        dbCreate: validate
-        url: jdbc:mysql://localhost:3306/cubo?useSSL=false
-        username: root
-        password: root
+#    cubo:
+#        dbCreate: validate
+#        url: jdbc:mysql://localhost:3306/cubo?useSSL=false
+#        username: root
+#        password: root
+#    fviberi:
+#        dbCreate: validate
+#        url: jdbc:mysql://localhost:3306/cubo?useSSL=false
+#        username: root
+#        password: root

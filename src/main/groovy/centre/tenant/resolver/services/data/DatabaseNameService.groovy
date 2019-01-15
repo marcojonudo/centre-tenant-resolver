@@ -13,5 +13,7 @@ abstract class DatabaseNameService implements DatabaseNameDataService {
 	List<DatabaseName> findAll() {
 		(List<DatabaseName>) DatabaseName.createCriteria().list {}
 	}
+	abstract DatabaseName save(String name)
+
 
 }

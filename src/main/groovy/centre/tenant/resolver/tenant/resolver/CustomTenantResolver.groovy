@@ -1,15 +1,18 @@
 package centre.tenant.resolver.tenant.resolver
 
+import centre.tenant.resolver.pogos.dataSources.Datastore
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.context.ServerRequestContext
 import org.grails.datastore.mapping.multitenancy.TenantResolver
 import org.grails.datastore.mapping.multitenancy.exceptions.TenantNotFoundException
-import javax.inject.Singleton
+import org.grails.orm.hibernate.HibernateDatastore
 
-@Singleton
+import javax.inject.Inject
+//@Singleton
 class CustomTenantResolver implements TenantResolver {
 
 	private static final TENANTS_KEYS = ['centre', 'database']
+	@Inject HibernateDatastore hibernateDatastore
 
 	/**
 	 * Resolve the tenantId from the HTTP request
@@ -40,7 +43,8 @@ class CustomTenantResolver implements TenantResolver {
 			if (nullIndex != -1) {
 				throw new TenantNotFoundException("Tenant could not be resolved. Header '${TENANTS_KEYS[nullIndex]}' value is null")
 			}
-			String tenantId = "cubo"//buildTenantId(tenantIds[0] as int, tenantIds[1])
+			String tenantId = buildTenantId(tenantIds[0], tenantIds[1])
+			tenantId = tenantId in Datastore.dataSourcesNames ? tenantId : tenantIds[1]
 			return tenantId
 		}
 		throw new TenantNotFoundException("Tenant could not be resolved from HTTP Header: ${TENANTS_KEYS.collect { "'$it'" }.join(", ")}")
@@ -52,8 +56,8 @@ class CustomTenantResolver implements TenantResolver {
 	 * @param database Database name
 	 * @return String tenantId
 	 */
-	static String buildTenantId(int centreCode, String database) {
-		return "$centreCode-$database"
+	static String buildTenantId(String serverId, String database) {
+		return "$serverId-$database"
 	}
 
 }

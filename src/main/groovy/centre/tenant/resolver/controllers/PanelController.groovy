@@ -6,6 +6,7 @@ import centre.tenant.resolver.services.data.CentreScheduleDataService
 import groovy.transform.CompileStatic
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
+import org.grails.datastore.mapping.core.exceptions.ConfigurationException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -25,13 +26,13 @@ class PanelController {
 
 	@Get("/hello")
 	Map<String, String> hello() {
-		CentreSchedule centreSchedule = centreScheduleDataService.get(1)
+		CentreSchedule centreSchedule = null
 //		Configuration configuration = null
-//		try {
-//			configuration = configurationDataService.find("planning.types")
-//		} catch (ConfigurationException e) {
-//			LOG.error(e.message)
-//		}
+		try {
+			centreSchedule = centreScheduleDataService.get(1)
+		} catch (ConfigurationException e) {
+			LOG.error(e.message)
+		}
 		return [hola: 'que tal']
 	}
 
